@@ -1,0 +1,43 @@
+{
+  "name": "front-server",
+  "version": "0.0.0",
+  "homepage": "",
+  "private": false,
+  "authors": [
+    "rectcircle <sunben960729@163.com>"
+  ],
+  "description": "this is a front web server",
+  "keywords": [
+    "front",
+    "server",
+    "gulp",
+    "bower",
+    "node",
+    "express"
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "jquery": "~2.1.0",
+    "bootstrap": "~3.3.5",
+    "fullpage.js": "fullpage#^2.8.6",
+    "ns-core": "https://github.com/rectcircle/ns-core.git#^0.0.1"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js",
+        "dist/fonts/*"
+      ]
+    },
+    "ns-core":{
+      "main": [
+        "dist/ns-core.js"
+      ]
+    }
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^3.1.0"
+  }
+}
