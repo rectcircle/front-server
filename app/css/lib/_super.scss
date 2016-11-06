@@ -1,2 +1,12 @@
-@import "reset";
+// @import "reset";
 @import "clearfix";
+
+* {
+    font-family: consolas,"微软雅黑","Microsoft YaHei";
+}
+
+
+html, body {
+    height: 100%;
+}
+

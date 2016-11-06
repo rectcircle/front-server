@@ -20,7 +20,9 @@
     "jquery": "~2.1.0",
     "bootstrap": "~3.3.5",
     "fullpage.js": "fullpage#^2.8.6",
-    "ns-core": "https://github.com/rectcircle/ns-core.git#^0.0.1"
+    "ns-core": "https://github.com/rectcircle/ns-core.git#^0.0.1",
+    "move.js": "^0.3.3",
+    "animate.css": "^3.5.2"
   },
   "overrides": {
     "bootstrap": {
@@ -30,9 +32,14 @@
         "dist/fonts/*"
       ]
     },
-    "ns-core":{
+    "ns-core": {
       "main": [
         "dist/ns-core.js"
+      ]
+    },
+    "move.js": {
+      "main": [
+        "move.min.js"
       ]
     }
   },

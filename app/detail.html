@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>文章</title>
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	
+	<!-- build:css css/article_vendor.css -->
+	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="../components/prism/prism.css" />
+	<!-- endbuild -->
+
+	<!-- build:css css/detail.css -->
+	<link rel="stylesheet" href="css/detail.css">
+	<!-- endbuild -->
+</head>
+<body>
+
+	{{include 'header'}}
+
+	<div class="container">
+		<div class="row main-container">
+			<div class="col-md-3">
+				{{include 'sidebar'}}
+			</div>
+				
+			<div class="col-md-9">
+				<ol class="breadcrumb">
+				  <li><a href="/article">文章</a></li>
+				  <li class="active">全部</li>
+				</ol>
+				<h1>{{detail.title}}</h1>
+				{{#detail.content}}
+				<div class="posted-desc text-right">发表于 @ {{detail.createTime}} {{detail.author}} 阅读({{detail.readTimes}}) <!--评论({{detail.comment.length}}) --></div>
+			<!-- 添加markdown-js生成器:-->
+				<p></p>
+			</div>
+		</div>
+	</div>
+
+	{{include 'footer'}}
+
+	<!-- <a href="###" id="backTop">返回顶部</a> -->
+
+	<!-- build:js js/article-vendor.js -->
+	<script src="../bower_components/jquery/dist/jquery.js"></script>
+	<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="../bower_components/ns-core/dist/ns-core.js"></script>
+	<script src="../bower_components/move.js/move.min.js"></script>
+	<script src="../components/prism/prism.js"></script>
+	<!-- endbuild -->
+
+	<!-- build:js js/detail-main.js -->
+	<script src="js/utils/scrollTo.js"></script>
+	<script src="js/module/backTop.js"></script>
+	<script src="js/detail.js" ></script>
+	<!-- endbuild -->
+
+</body>
+</html>

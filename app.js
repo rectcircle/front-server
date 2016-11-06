@@ -5,20 +5,37 @@ var favicon = require('serve-favicon');	//处理网站logo
 var logger = require('morgan');	//自动刷新重启服务
 var cookieParser = require('cookie-parser');	
 var bodyParser = require('body-parser');
-var template = require('art-template');	//模板插件
+
+var myTemp = require('./utils/mytemplate'); //模板引擎封装
+
+var https = require('https');
+var http = require('http');
+var fs = require('fs');
 //-----------------------------
 
 //--------自定义路由-----------
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var article = require('./routes/article');
+var detail = require('./routes/detail');
+var admin = require('./routes/admin');
+var upload = require('./routes/upload');
 
 //-----------------------------
+
+//-----------加载https证书----------
+
+var options = {
+    key: fs.readFileSync('./2_www.rectcircle.cn.key'),
+    cert: fs.readFileSync('./1_www.rectcircle.cn_cert.crt')
+};
+
+//----------------------------------
 
 var app = express();	//获取api的接口
 
 //设置模板引擎
-template.config('extname', '.html');	//设置模板后缀名
-app.engine('.html', template.__express);	
+app.engine('.html', myTemp.__express);	
 app.set('view engine', 'html');
 app.set('views', __dirname + '/views');	//注册模板的目录位置，默认为__dirname + 'views'
 
@@ -39,22 +56,32 @@ app.use(cookieParser());	//cookie解析
 
 if(app.get('env') === 'production'){
 	console.log('进入了生产模式');
-	app.use(express.static(path.join(__dirname, '/public')));	//设定静态文件目录
+	app.use('**/js',express.static(path.join(__dirname, '/public/js')));	//设定静态文件目录
+	app.use('**/css',express.static(path.join(__dirname, '/public/css')));	//设定静态文件目录
+	app.use('**/img',express.static(path.join(__dirname, '/public/img')));	//设定静态文件目录
+	app.use('**/fonts',express.static(path.join(__dirname, '/public/fonts')));	//设定静态文件目录
 	app.set('views', __dirname + '/views');	//注册模板的目录位置，默认为__dirname + 'views'
 } else if(app.get('env') === 'development') {
 //配置调试环境
 	console.log('进入了开发者模式');
-	app.use('/js', express.static(path.join(__dirname, '/.tmp/js')));
-	app.use('/css', express.static(path.join(__dirname, '/.tmp/css')));
-	app.use('/img', express.static(path.join(__dirname, '/app/img')));
-	app.use('/fonts', express.static(path.join(__dirname, '/.tmp/fonts')));
-	app.use('/bower_components',express.static(path.join(__dirname, '/bower_components')));
+	app.use('**/js', express.static(path.join(__dirname, '/.tmp/js')));
+	app.use('**/css', express.static(path.join(__dirname, '/.tmp/css')));
+	app.use('**/img', express.static(path.join(__dirname, '/app/img')));
+	app.use('**/img', express.static(path.join(__dirname, '/public/img')));
+	app.use('**/fonts', express.static(path.join(__dirname, '/.tmp/fonts')));
+	app.use('**/bower_components',express.static(path.join(__dirname, '/bower_components')));
+	app.use('**/components',express.static(path.join(__dirname, '/components')));
 
 	app.set('views', __dirname + '/app');	//注册模板的目录位置，默认为__dirname + 'views'
 }
 
 //-------转入路由---------
 app.use('/', routes);
+app.use('/article', article);
+app.use('/detail', detail);
+app.use('/admin', admin);
+app.use('/upload', upload);
+
 
 //------------------------
 
@@ -74,7 +101,16 @@ if (app.get('env') === 'development') {
 
 //TODO 错误处理
 
-app.listen(3000);
+
+if(app.get('env') === 'production'){
+	// 发布前注释掉http端口
+	http.createServer(app).listen(80);	//仅仅为调试
+	https.createServer(options, app).listen(443);
+} else if(app.get('env') === 'development'){
+	app.listen(3000);
+}
+
+
 module.exports = app;
 
 

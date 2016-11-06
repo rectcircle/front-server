@@ -1,5 +1,224 @@
-﻿@import "lib/_super";
+﻿//包含重置和清除浮动
+@import "lib/super";
 
-.test{
-	transition: all 1s;
+//配置页面sass变量
+@import "lib/aboutvar";	
+
+//导入页头样式
+@import "lib/header";
+
+//导入页尾样式
+@import "lib/footer";
+
+//导入loading悬浮层
+@import "lib/loading";
+
+#header{
+	position: fixed;
+	z-index: 1;
+	top:0;
+	width:100%;
 }
+
+.header{
+	border-width:0;
+}
+
+.bg{
+	background-size: cover;
+	background-repeat:no-repeat;
+	background-position: center;
+	// background-color: rgba(0,0,0,0.4);
+	
+}
+
+.first-bg{
+	background-image: url("../img/climbtec.jpg");
+}
+
+%animateSetting {
+	transition-duration: 0.5s;
+	transition-delay:0s;
+	animation-duration: 0.5s;
+	animation-delay:0;
+}
+
+.first-section{
+	position:relative;
+	.main-title{
+		font-size: 36px;
+		color: #fff;
+		text-align:center;
+		@extend %animateSetting;
+	}
+	.sub-title{
+		font-size: 20px;
+		text-align:center;
+		color: #fff;
+		@extend %animateSetting;
+	}
+}
+
+.second-bg{
+	background-image: url("../img/old.jpg");
+}
+
+.img-txt-item{
+	text-align:center;
+	width:100%;
+	height:100%;
+	.img-item1{
+		transition-delay:0s;
+		animation-delay:0;
+	}
+
+	.img-item2{
+		transition-delay:1s;
+		animation-delay:1s;
+	}
+
+	.img-item3{
+		transition-delay:2s;
+		animation-delay:2s;
+	}
+
+	.txt{
+		transition-delay:3s;
+		animation-delay:3s;
+		margin-top: 2px;
+		margin-bottom: 2px;
+		border:1px solid #fff;
+		border-radius: 5px;
+
+		p{
+			margin-bottom: 0;
+		}
+	}
+}
+
+
+@media screen and (max-width: 768px){
+	.img-item1{
+		width: 70%;
+	}
+
+	.img-item2{
+		width: 70%;
+	}
+
+	.img-item3{
+		width: 70%;
+	}
+
+	.txt{
+		font-size: 16px;
+		color: #777;
+	}
+
+	.hcenter{
+		position:absolute;
+		left: 0;
+		right: 0;
+	}
+
+	.title1{
+		text-align:center;
+		color:#fff;
+		margin-bottom:10px;
+	}
+
+	dd{
+		margin-left: 60px;
+	}
+}
+
+@media screen and (min-width: 768px){
+	.img-item1{
+		width: 60%;
+	}
+
+	.img-item2{
+		width: 50%;
+	}
+
+	.img-item3{
+		width: 60%;
+	}
+
+	.txt{
+		font-size: 16px;
+		color: #777;
+	}
+
+	.title1{
+		text-align:center;
+		color:#fff;
+		margin-bottom:50px;
+	}
+
+}
+
+@media screen and (min-width: 970px){
+	.img-txt-item{
+		img{
+			width: 100%;
+		}
+		.txt{
+			font-size: 22px;
+			// color: #888;
+		}
+	}
+
+	.title1{
+		text-align:center;
+		color:#fff;
+		margin-bottom:50px;
+	}
+
+}
+
+.title1{
+	>h2>small{
+		color: #ddd;
+	}
+}
+
+.ul-items{
+	li{
+		background-color: rgba(0,0,0,0.1);
+		color: #fff;
+		border: 1px solid;
+		text-align:center;
+	}
+}
+
+.hcenter{
+	text-align:center;
+}
+
+.third-bg{
+	background-image: url("../img/javabg.jpg");
+}
+
+@mixin liAnimation($number){
+	@for $i from 1 through $number {	//包括3
+		.li#{$i} {
+			transition-delay:0s + $i;
+			animation-delay:0s + $i;
+		}
+	}
+}
+
+@include liAnimation(12);
+
+.main-footer{
+	position:absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+.fontcolor{
+	color: #fff;
+}
+

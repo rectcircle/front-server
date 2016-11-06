@@ -1,0 +1,23 @@
+//侧边栏样式
+.list-header{
+	color: $fontColor;
+    background-color: $bgc;
+    border-color: $bgc;
+}
+
+a.list-header{
+	color: $fontColor;
+	&:hover, &:focus{
+		color: $fontColor;
+		background-color: $bgc-hover;
+    }
+}
+
+.subject-item{
+	white-space: nowrap;overflow: hidden;text-overflow: ellipsis;
+	&:hover{
+		white-space:normal;
+		overflow: auto;
+		text-overflow:inherit;
+	}
+}

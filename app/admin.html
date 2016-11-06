@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="UTF-8">
+	<title>文章</title>
+	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+	<!-- build:css css/admin_vendor.css -->
+	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
+	<link rel="stylesheet" href="../components/simplemde/css/simplemde.min.css" />
+	<link rel="stylesheet" href="../components/simplemde/css/font-awesome.min.css" />
+	<!-- endbuild -->
+
+	<!-- build:css css/admin.css -->
+	<link rel="stylesheet" href="css/admin.css">
+	<!-- endbuild -->
+
+</head>
+<body>
+
+	{{include 'header'}}
+
+	<!-- <div class="alert alert-success alert-dismissible" role="alert" style="position: fixed;top: 60px;right:20px;left: 20px; z-index: 2">
+	                            <button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+	                            content+
+	                        </div>
+	 -->
+	<!-- Nav tabs -->
+	<div class="container" style="height: 100%">
+	<h1>后台管理</h1>
+	<ul class="nav nav-tabs" role="tablist">
+		<li id="loginTab" role="presentation"><a href="#loginView" role="tab" data-toggle="tab">登录</a></li>
+		<li role="presentation"><a href="#comment" role="tab" data-toggle="tab">最新评论</a></li>
+		<li id="listTab" role="presentation"><a href="#list" role="tab" data-toggle="tab">文章列表</a></li>
+		<li id="editTab" role="presentation" class="active"><a href="#editView" role="tab" data-toggle="tab">编辑文章</a></li>
+
+		<li id="tagTab" role="presentation"><a href="#tagView" role="tab" data-toggle="tab">标签管理</a></li>
+		
+		<li id="subjectTab" role="presentation"><a href="#subjectView" role="tab" data-toggle="tab">主题管理</a></li>
+
+	</ul>
+
+	<!-- Tab panes -->
+	<div class="tab-content">
+		<div role="tabpanel" class="tab-pane" id="loginView">
+			<div class="form-group">
+				<label for="exampleInputEmail1">用户名</label>
+				<input id="username" type="text" class="form-control" id="exampleInputEmail1" placeholder="管理员账号">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">密码</label>
+				<input id="password" type="password" class="form-control" id="exampleInputPassword1" placeholder="管理员密码">
+			</div>
+
+			<button id="login" class="btn btn-default">登录</button>
+			
+			<P></P>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="comment">comment</div>
+		<div role="tabpanel" class="tab-pane" id="list">
+		     
+		</div>
+		<div role="tabpanel" class="tab-pane active" id="editView" >
+			<p></p>
+			<form role="form" id="uploadForm" method="post"enctype="multipart/form-data">
+				<div class="form-group">
+					<label for="selectFile">请选择文件</label>
+					<input id="selectFile" type="file" name="file" />
+				</div>
+					
+			</form>
+			<button id="startUpload" class="btn btn-success">上传</button>
+			<p></p>
+
+			<div class="row" id="imgShowView">
+			</div>
+
+			<h3>开始编辑 <small><button class="btn" id="newArticle" >恢复为新建文章</button><span id="articleStatus" class="label label-default label-danger">New</span></small></h3>
+			<input type="text" class="form-control" id="title" placeholder="请输入标题">
+			<textarea id="editor" placeholder="正文"></textarea>
+			<input id="tags" type="text" class="form-control" placeholder="请输入所属标签，以,分割">
+			<textarea id="subject" class="form-control" rows="5" placeholder="请输入所属主题&#13;&#10;已存在格式为 主题名:排序号 &#13;&#10;分割符为,&#13;&#10;排序号为0表示目前最大的排序号++"></textarea>
+			<p></p>
+			<button id="publishArticle" type="button" class="btn btn-warning" data-status=1>发布</button>
+			<button id="saveArticle" type="button" class="btn btn-success" data-status=0>保存，下次编辑</button>
+			<button id="deleteArticle" type="button" class="btn btn-danger">删除</button>
+			<p></p>
+		</div>
+		<div role="tabpanel" class="tab-pane" id="tagView">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>标签名</th>
+						<th>文章数</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="tagListView">
+				</tbody>
+			</table>
+		</div>
+
+		<div role="tabpanel" class="tab-pane" id="subjectView">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>id</th>
+						<th>主题</th>
+						<th>文章数</th>
+						<th>描述</th>
+						<th>操作</th>
+					</tr>
+				</thead>
+				<tbody id="subjectListView">
+					
+				</tbody>
+			</table>
+
+			<p></p>
+			<div class="form-group">
+				<label for="subjectIdInput">主题id</label>
+				<input type="text" class="form-control" id="subjectIdInput" placeholder="主题id">
+			</div>
+			<div class="form-group">
+				<label for="subjectNameInput">主题名</label>
+				<input type="text" class="form-control" id="subjectNameInput" placeholder="请输入主题名">
+			</div>
+
+			<div class="form-group">
+				<label for="subjectDescriptionInput">描述</label>
+				<textarea id="subjectDescriptionInput" class="form-control" rows="6" placeholder=""></textarea>
+			</div>
+
+			<div class="form-group">
+				<button id="updateSubject" data-flag="update" type="button" class="btn btn-success" >更新</button>
+				<button id="newSubject" data-flag="new" type="button" class="btn btn-warning" >新建</button>
+			</div>
+			
+		</div>
+	</div>
+	
+	<!-- <a href="###" id="backTop">返回顶部</a> -->
+
+	<!-- build:js js/admin-vendor.js -->
+	<script src="../bower_components/jquery/dist/jquery.js"></script>
+	<script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
+	<script src="../bower_components/ns-core/dist/ns-core.js"></script>
+	<script src="../components/simplemde/js/simplemde.min.js"></script>
+	<script src="../components/md5/jquery.md5.js"></script>
+	<script src="../components/clipboard/clipboard.min.js"></script>
+
+	<!-- endbuild -->
+
+
+	<!-- build:js js/admin-main.js -->
+	<script src="js/utils/scrollTo.js"></script>
+	<script src="js/module/backTop.js"></script>
+	<script src="js/utils/common.js"></script>
+	<script src="js/module/login.js"></script>
+	<script src="js/module/articleAdmin.js"></script>
+	<script src="js/module/upload.js"></script>
+
+	<script src="js/admin.js" ></script>
+	<!-- endbuild -->
+
+	<script type="text/javascript">
+		var simplemde = new SimpleMDE();
+	</script>
+
+</body>

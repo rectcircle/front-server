@@ -27,7 +27,8 @@ time, mark, audio, video {
 }
 
 body {
-    line-height:1;
+    font-size:14px; 
+    line-height:1.4286;
 }
 
 :focus {
@@ -100,4 +101,14 @@ hr {
 
 input, select {
     vertical-align:middle;
+}
+
+html{
+    height: 100%;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }

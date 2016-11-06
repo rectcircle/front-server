@@ -1,0 +1,26 @@
+//分页样式
+.paging-container{
+	a{
+		color: $bgc;
+	}
+	 li > a, > li > span {
+    	color: $bgc;
+    	&:hover, &:focus{
+			color: $bgc;
+   		}
+	}
+	
+}
+
+.pagination > .active {
+	a, span{
+		background-color: $bgc;
+		border-color: $bgc;
+		color: $fontColor;
+    	&:hover, &:focus{
+			background-color: $bgc;
+			border-color: $bgc;
+			color: $fontColor;
+   		}
+	}
+}

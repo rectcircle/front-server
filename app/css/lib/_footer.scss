@@ -1,0 +1,14 @@
+$footer-bgc:rgba(0,0,0,0.2) !default;
+$footer-fontColor:#fff !default;
+
+.main-footer{
+	color:$footer-fontColor;
+	text-align:center;
+	background-color: $footer-bgc;
+
+}
+
+
+.main-footer .container:after{
+    height: 20px;
+}

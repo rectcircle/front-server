@@ -2,12 +2,17 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <title>Test</title>
+    <title>Rectcircle的主页</title>
+
+    <meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
 
     <!-- build:css css/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="../bower_components/fullpage.js/dist/jquery.fullpage.css" />
+    <link rel="stylesheet" href="../bower_components/animate.css/animate.css" />
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -16,139 +21,148 @@
     <!-- endbuild -->
 </head>
 <body>
+<!--navbar-inverse-->
+    <div id="header">
+        {{include 'header'}}
+    </div>
 
-    <!-- from: "widget/header/header.html" -->
-    <h1>header</h1>
-    <p>test1</p>
-    <p>test2</p>
-    <p>test3</p>
-    <p>test4</p>
-    <p>test5</p>
-    <p>test6</p>
-    <p>test7</p>
-    <p>test8</p>
-    <p>test9</p>
-    <p>test10</p>
-    <p>test11</p>
-    <p>test12</p>
-    <p>test13</p>
-    <p>test14</p>
-    <p>test15</p>
-    <p>test16</p>
-    <p>test17</p>
-    <p>test18</p>
-    <p>test19</p>
-    <p>test20</p>
-    <p>test21</p>
-    <p>test22</p>
-    <p>test23</p>
-    <p>test24</p>
-    <p>test25</p>
-    <p>test26</p>
-    <p>test27</p>
-    <p>test28</p>
-    <p>test29</p>
-    <p>test30</p>
-    <p>test31</p>
-    <p>test32</p>
-    <p>test33</p>
-    <p>test34</p>
-    <p>test35</p>
-    <p>test36</p>
-    <p>test37</p>
-    <p>test38</p>
-    <p>test39</p>
-    <p>test40</p>
-    <p>test41</p>
-    <p>test42</p>
-    <p>test43</p>
-    <p>test44</p>
-    <p>test45</p>
-    <p>test46</p>
-    <p>test47</p>
-    <p>test48</p>
-    <p>test49</p>
-    <p>test50</p>
-    <p>test51</p>
-    <p>test52</p>
-    <p>test53</p>
-    <p>test54</p>
-    <p>test55</p>
-    <p>test56</p>
-    <p>test57</p>
-    <p>test58</p>
-    <p>test59</p>
-    <p>test60</p>
-    <p>test61</p>
-    <p>test62</p>
-    <p>test63</p>
-    <p>test64</p>
-    <p>test65</p>
-    <p>test66</p>
-    <p>test67</p>
-    <p>test68</p>
-    <p>test69</p>
-    <p>test70</p>
-    <p>test71</p>
-    <p>test72</p>
-    <p>test73</p>
-    <p>test74</p>
-    <p>test75</p>
-    <p>test76</p>
-    <p>test77</p>
-    <p>test78</p>
-    <p>test79</p>
-    <p>test80</p>
-    <p>test81</p>
-    <p>test82</p>
-    <p>test83</p>
-    <p>test84</p>
-    <p>test85</p>
-    <p>test86</p>
-    <p>test87</p>
-    <p>test88</p>
-    <p>test89</p>
-    <p>test90</p>
-    <p>test91</p>
-    <p>test92</p>
-    <p>test93</p>
-    <p>test94</p>
-    <p>test95</p>
-    <p>test96</p>
-    <p>test97</p>
-    <p>test98</p>
-    <p>test99</p>
-    <p>test100</p>
-    <p>test101</p>
-    <p>test102</p>
-    <p>test103</p>
-    <p>test104</p>
-    <p>test105</p>
-    <p>test106</p>
-    <p>test107</p>
-    <p>test108</p>
-    <p>test109</p>
-    <p>test110</p>
-    <p>test94</p>
-    <p>test95</p>
-    <p>test96</p>
-    <p>test97</p>
-    <p>test98</p>
-    <p>test99</p>
-    <p>test100</p>
-    <p>test101</p>
-    <p>test102</p>
-    <p>test103</p>
-    <p>test104</p>
-    <p>test105</p>
-    <p>test106</p>
-    <p>test107</p>
-    <p>test108</p>
-    <p>test109</p>
-    <p>test110</p>
 
-    <a href="###" id="backTop">返回顶部</a>
+    <div id="fullpage">
+        <div class="section bg first-bg first-section" active>
+            <div id="first-main-title" class="main-title animated">永攀技术高峰</div>
+            <div id="first-sub-title" class="sub-title animated">Climb the Technical Peak Forever</div> 
+        </div>
+      
+        <div class="section bg second-bg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="img-txt-item">
+                            <img class="img-thumbnail img-item1 animated fadeOutLeft" src="img/highschool.jpg">
+                            <div class="txt txt-item1 animated bounceOut"><p class="bg-primary">高中的奋斗</p></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="img-txt-item">
+                            <img class="img-circle img-item2 animated fadeOutUp" src="img/failureisbegin.jpg">
+                            <div class="txt txt-item2 animated bounceOut"><p class="bg-danger">失败是新的起点</p></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4"><div class="img-txt-item">
+                            <img class="img-thumbnail img-item3 animated fadeOutRight" src="img/coder1.jpg">
+                            <div class="txt txt-item3 animated bounceOut"><p class="bg-info">选择码农之路</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section bg third-bg">
+            <div class="container">
+                <div class="title1 animated fadeOut">
+                    <h2>我的技术栈(1) <small>后端</small></h2>
+                    <!-- <h3>java为主线的后端技术</h3> -->
+                </div>
+                <div class="row">
+                    <div class="col-md-5 hcenter">
+                        <img class="animated fadeOut javalogo" src="img/java.png">
+                    </div>
+                    <div class="col-md-7">
+                        <ul class="list-group ul-items">
+                            <li class="list-group-item li0 animated bounceOutRight">java se</li>
+                            <li class="list-group-item li1 animated bounceOutRight">servlet jsp</li>
+                            <li class="list-group-item li2 animated bounceOutRight">数据库 jdbc</li>
+                            <li class="list-group-item li3 animated bounceOutRight">Spring</li>
+                            <li class="list-group-item li4 animated bounceOutRight">Hibernate</li>
+                            <li class="list-group-item li5 animated bounceOutRight">Struts2</li>
+                            <li class="list-group-item li6 animated bounceOutRight">Spring MVC</li>
+                            <li class="list-group-item li7 animated bounceOutRight">UML建模</li>
+                            <li class="list-group-item li8 animated bounceOutRight">Junit</li>
+                            <li class="list-group-item li9 animated bounceOutRight">XML</li>
+                            <li class="list-group-item li10 animated bounceOutRight" >Maven</li>
+                            <li class="list-group-item li11 animated bounceOutRight">......</li>
+                        </ul>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+      
+        <div class="section">
+            <div class="container">
+                <div class="title1 animated fadeOut">
+                    <h2>我的技术栈(2) <small>前端</small></h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 hcenter">
+                        <img class="animated fadeOut javalogo" src="img/htmlcssjs.png" width="100%">
+                    </div>
+                    <div class="col-md-7 ">
+                        <ul class="list-group ul-items">
+                            <li class="list-group-item li1 animated bounceOutRight">html</li>
+                            <li class="list-group-item li2 animated bounceOutRight">javascript</li>
+                            <li class="list-group-item li3 animated bounceOutRight">css</li>
+                            <li class="list-group-item li4 animated bounceOutRight">nodejs</li>
+                            <li class="list-group-item li5 animated bounceOutRight">grup</li>
+                            <li class="list-group-item li6 animated bounceOutRight">jquery</li>
+                            <li class="list-group-item li7 animated bounceOutRight">bootstrap</li>
+                            <li class="list-group-item li8 animated bounceOutRight">sass</li>
+                            <li class="list-group-item li9 animated bounceOutRight">常见的js库</li>
+                            <li class="list-group-item li10 animated bounceOutRight">.......</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+      
+        <div class="section">
+            <div class="container">
+                <div class="title1 animated fadeOut">
+                    <h2>我的技术栈(3) <small>其他</small></h2>
+                </div>
+                <div class="row">
+                    <div class="col-md-5 hcenter">
+                        <img class="animated fadeOut javalogo" src="img/otherlogo.png" width="100%">
+                    </div>
+                    <div class="col-md-7 ">
+                        <ul class="list-group ul-items">
+                            <li class="list-group-item li1 animated bounceOutRight">算法acm</li>
+                            <li class="list-group-item li2 animated bounceOutRight">C C++</li>
+                            <li class="list-group-item li3 animated bounceOutRight">Linux</li>
+                            <li class="list-group-item li4 animated bounceOutRight">微信公众号开发</li>
+                            <li class="list-group-item li5 animated bounceOutRight">git</li>
+                            <li class="list-group-item li6 animated bounceOutRight">设计模式</li>
+                            <li class="list-group-item li7 animated bounceOutRight">.......</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <div class="section">
+            <div class="container lastpage animated fadeOut">
+                <div class="title1">
+                    <h3>联系我： <small>欢迎技术交流</small></h3>
+                </div>
+                <div class="row fontcolor">
+                    <div class="col-md-3"></div>
+                    <div class="col-md-6">
+                        <dl class="dl-horizontal fontcolor">
+                          <dt>QQ</dt>
+                          <dd>2821060634</dd>
+                          <dt>E-mail</dt>
+                          <dd>rectcircle96@gmail.com</dd>
+                        </dl>
+                    </div>
+                    <div class="col-md-3 "></div>
+                </div>
+                {{include 'footer'}}
+            </div>
+        </div>
 
+    </div>
+    {{include 'loading'}}
+    <!-- <a href="###" id="backTop">返回顶部</a> -->
 
     <!-- build:js js/vendor.js -->
     <!-- bower:js -->
@@ -156,6 +170,7 @@
     <script src="../bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="../bower_components/fullpage.js/dist/jquery.fullpage.js"></script>
     <script src="../bower_components/ns-core/dist/ns-core.js"></script>
+    <script src="../bower_components/move.js/move.min.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -164,5 +179,10 @@
     <script src="js/module/backTop.js"></script>
     <script src="js/main.js" ></script>
     <!-- endbuild -->
+
+    <script>
+        
+    </script>
+
 </body>
 </html>

@@ -8,7 +8,7 @@ var runSequence = require('run-sequence');	//引入顺序执行任务插件
 var $ = gulpLoadPlugins();	//执行加载插件，加载所有插件返回一个{}
 var reload = browserSync.reload;
 
-var cdnPrefix = "";  //给html引用添加cdn前缀
+var cdnPrefix = "";  //给html引用添加绝对路径或者cdn前缀
 
 //定义一个task,处理css编译生成
 gulp.task('css',function(){ //es6写法相当于无参数匿名函数
@@ -52,7 +52,8 @@ gulp.task('img', function() {
 //font处理拷贝
 gulp.task('fonts', function() {
   return gulp.src(require('main-bower-files')('**/*.{eot,svg,ttf,woff,woff2}', function (err) {})
-      .concat('app/fonts/**/*'))  //？TODO
+      .concat('app/fonts/**/*').concat('components/**/*.{eot,svg,ttf,woff,woff2}'))  //？TODO
+      .pipe($.flatten()) //展开目录
       .pipe(gulp.dest('.tmp/fonts')) 
       .pipe(gulp.dest('public/fonts'))
       ;
@@ -92,7 +93,16 @@ gulp.task('wiredep', function() {
 		optional: 'configuration',
     	goes: 'here'
 	}))
-	.pipe(gulp.dest('app/'));
+  .pipe( gulp.dest('app/'));
+});
+
+gulp.task('wiredep:test', function() {
+  gulp.src(['test/*.html'])
+  .pipe(wiredep({
+    optional: 'configuration',
+      goes: 'here'
+  }))
+  .pipe(gulp.dest('test/'));
 });
 
 //校验js函数
@@ -180,17 +190,17 @@ gulp.task('serve', function() {
 	});
 });
 
-//测试开启发布服务器
-gulp.task('serve:dist', ["nodemon:dist"],function() {
+//启动发布的服务器
+gulp.task('serve:dist', ["nodemon:dist", "build"],function() {
 	browserSync.init({
 		notify: false,
 		port: 9000,
-		proxy: 'http://localhost:3000'
+		proxy: 'http://localhost'
 	});
 });
 
 //启动js单元测试
-gulp.task('serve:test', ['js'], function() {
+gulp.task('serve:test', ['wiredep:test', 'js'], function() {
   browserSync.init({
     notify: false,
     port: 9000,
@@ -217,6 +227,28 @@ gulp.task('build', ['lint', 'html', 'img', 'fonts', 'extras'], function() {
 //缺省任务
 gulp.task('default', function() {
   runSequence(['clean', 'wiredep'], 'build');
+});
+
+//初始化发布到远程服务器：在服务端：npm install --production
+gulp.task('upload:init',function(){
+  return gulp.src(['package.json','app.js','2_www.rectcircle.cn.key','1_www.rectcircle.cn_cert.crt'],{base: './'})
+    .pipe($.sftp({
+            host: '119.29.166.164',
+            user: 'root',
+            keyLocation: "rectcircle",
+            remotePath:'/home/node/personalsite/'
+        }));
+});
+
+//真正发布到服务器
+gulp.task('upload',['build','upload:init'],function(){
+  return gulp.src(['service/**','routes/**','utils/**','views/**','public/**'],{base: './'})
+    .pipe($.sftp({
+            host: '119.29.166.164',
+            user: 'root',
+            keyLocation: "rectcircle",
+            remotePath:'/home/node/personalsite/'
+        }));
 });
 
 //TODO 编写此文档的说明

@@ -1,0 +1,41 @@
+//包含重置和清除浮动
+@import "lib/super";
+
+//配置页面sass变量
+@import "lib/articlevar";	
+
+//导入页头样式
+@import "lib/header";
+
+//导入页尾样式
+@import "lib/footer";
+
+a{
+    color: $bgc;
+     &:hover{
+        color: $bgc;
+     }
+}
+
+.container{
+    min-height: 100%;
+    margin-bottom: -10px; 
+    &:after {
+        content: "";
+        display: block;
+    }
+}
+
+
+.linebreak{
+	word-wrap:break-word;
+	word-break:break-all;
+}
+
+.thumbnail-100{
+	width:100px;
+}
+
+img{
+    width: 100%;
+}

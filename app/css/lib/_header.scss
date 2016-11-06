@@ -1,0 +1,72 @@
+$bgc:#1d953f !default;
+$bgc-hover:darken($bgc,4);
+$fontColor:#fff !default;
+
+%cBgc {
+	color: $fontColor;
+	background-color: $bgc-hover;
+}
+
+.header{
+	background-color: $bgc;
+	border-radius:0px;
+	a{
+		color:$fontColor;
+		letter-spacing: 2px;
+	}
+	.icon-bar{
+		color:$fontColor;
+		background-color: $fontColor;
+	}
+
+	.navbar-brand{
+		color:$fontColor;
+		letter-spacing: 0;
+		&:hover, &:focus{
+    		@extend %cBgc;
+    	}
+	}
+
+	.navbar-toggle {
+ 	   border: 0px solid transparent;
+    	&:hover, &:focus{
+    		@extend %cBgc;
+    	}
+	}
+
+	.navbar-nav > li > a {
+    	color: #fff;
+	}
+
+
+}
+
+.header .navbar-nav > .active > a, .navbar-default .navbar-nav > .active > a:hover, .navbar-default .navbar-nav > .active > a:focus {
+    @extend %cBgc;
+}
+
+.header .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    @extend %cBgc;
+}
+
+.header .navbar-nav > .open > a, .navbar-default .navbar-nav > .open > a:hover, .navbar-default .navbar-nav > .open > a:focus {
+    @extend %cBgc;
+}
+
+.header .navbar-nav .open  {
+	.dropdown-menu{
+		background-color: $bgc;
+		> li > a{
+			color: $fontColor;
+			letter-spacing: 0;
+			&:hover, &focus{
+				@extend %cBgc;
+				letter-spacing: 0;
+			}
+		}
+	}
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+    background-color: #fff;
+}
