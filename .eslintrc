@@ -142,7 +142,7 @@
 		// allowPattern: 当属性名匹配提供的正则表达式时，允许使用[]方式取值,否则只能用.号取值 e.g [2, {"allowPattern": "^[a-z]+(_[a-z]+)+$"}]
 		"dot-notation": [2, {"allowKeywords":false}],
 		// 使用 === 替代 == allow-null允许null和undefined==
-		"eqeqeq": [2,"allow-null"],
+		"eqeqeq": [1,"allow-null"],
 		// 要求 for-in 循环中有一个 if 语句
 		"guard-for-in":2,
 		// 禁用 alert、confirm 和 prompt
@@ -274,7 +274,7 @@
 		// 禁止覆盖受限制的标识符
 		"no-shadow-restricted-names":2,
 		// 禁用未声明的变量，除非它们在 /*global */ 注释中被提到
-		"no-undef":2,
+		"no-undef":1,
 		// 禁止将变量初始化为 undefined
 		"no-undef-init":2,
 		// 禁止将 undefined 作为标识符

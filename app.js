@@ -54,12 +54,17 @@ app.use(cookieParser());	//cookie解析
 // linux & mac: export NODE_ENV=production
 // windows:set NODE_ENV=production
 
+var cacheOpts ={
+	maxAge: 60*60*24*365
+}
+
+
 if(app.get('env') === 'production'){
 	console.log('进入了生产模式');
-	app.use('**/js',express.static(path.join(__dirname, '/public/js')));	//设定静态文件目录
-	app.use('**/css',express.static(path.join(__dirname, '/public/css')));	//设定静态文件目录
-	app.use('**/img',express.static(path.join(__dirname, '/public/img')));	//设定静态文件目录
-	app.use('**/fonts',express.static(path.join(__dirname, '/public/fonts')));	//设定静态文件目录
+	app.use('**/js',express.static(path.join(__dirname, '/public/js'),cacheOpts));	//设定静态文件目录
+	app.use('**/css',express.static(path.join(__dirname, '/public/css'),cacheOpts));	//设定静态文件目录
+	app.use('**/img',express.static(path.join(__dirname, '/public/img'),cacheOpts));	//设定静态文件目录
+	app.use('**/fonts',express.static(path.join(__dirname, '/public/fonts'),cacheOpts));	//设定静态文件目录
 	app.set('views', __dirname + '/views');	//注册模板的目录位置，默认为__dirname + 'views'
 } else if(app.get('env') === 'development') {
 //配置调试环境
@@ -104,7 +109,7 @@ if (app.get('env') === 'development') {
 
 if(app.get('env') === 'production'){
 	// 发布前注释掉http端口
-	http.createServer(app).listen(80);	//仅仅为调试
+//	http.createServer(app).listen(80);	//仅仅为调试
 	https.createServer(options, app).listen(443);
 } else if(app.get('env') === 'development'){
 	app.listen(3000);

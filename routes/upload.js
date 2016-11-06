@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 
 var multiparty = require('multiparty');
-var util = require('util');
-var fs = require('fs');
+//var util = require('util');
+//var fs = require('fs');
 
 /* GET home page. */
 router.post('/', function(req, res, next) {
@@ -18,7 +18,7 @@ router.post('/', function(req, res, next) {
 			res.send({errcode:40007,errmsg:"文件上传错误"});
 		} else {
 			// console.log(files.file[0].path);
-			strArr = files.file[0].path.split(/[/\\]/)
+			var strArr = files.file[0].path.split(/[/\\]/)
 			// console.log(strArr[strArr.length-1]);
 			res.send({errcode:0,errmsg:"success",data:strArr[strArr.length-1]});
 		}

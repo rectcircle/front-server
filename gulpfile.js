@@ -118,8 +118,8 @@ function lint(files, options) {
 gulp.task('lint', function() {
   return lint(['app/js/**/*.js','service/**/*.js','routes/**/*.js'], {
     fix: true
-  })
-    .pipe(gulp.dest('app/js'));
+  });
+    //.pipe(gulp.dest('app/js'));
 });
 
 //校验js测试文件
@@ -242,7 +242,7 @@ gulp.task('upload:init',function(){
 
 //真正发布到服务器
 gulp.task('upload',['build','upload:init'],function(){
-  return gulp.src(['service/**','routes/**','utils/**','views/**','public/**'],{base: './'})
+  return gulp.src(['service/**','routes/**','utils/**','views/**','public/**', 'config/**'],{base: './'})
     .pipe($.sftp({
             host: '119.29.166.164',
             user: 'root',

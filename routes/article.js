@@ -1,8 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var ArticleService = require("../service/articleService");
-var makedown = require('../utils/makedown');
-var commonUtil = require('../utils/commonUtil');
+//var makedown = require('../utils/makedown');
+//var commonUtil = require('../utils/commonUtil');
 
 
 
