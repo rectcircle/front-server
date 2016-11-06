@@ -27,9 +27,11 @@
 			<div class="col-md-9">
 				<ol class="breadcrumb">
 				  <li><a href="/article">文章</a></li>
-				  <li class="active">{{crumb}}</li>
+				  <li class="active">{{crumb.crumb}}</li>
 				</ol>
-
+				{{if crumb.description}}
+					<div class="well well-sm">描述：{{crumb.description}}</div>
+				{{/if}}
 <!-- 				<div class="catalog-item">
 				    <h4><a href="#">[置顶]开源服务专题之--------mysql的编译安装</a> <span class="label label-default label-danger">New</span></h4>
 				    <p>摘要: 为什么选择MySQL 为什么选择MySQL 1:mysql性能卓越，服务稳定，很少出现异常宕机 2:mysql开源免费，无版权制约，自主性及使用成本低 3:产品耦合度，mysql支持多种操作系统，支持多开发语言，特别是php 4:技术积累，庞大的活跃的社区, 5:软件体积小，安装简单，易于维护 My。</p>
