@@ -1,6 +1,6 @@
 var express = require('express');
 
-var rf=require("fs");  
+//var rf=require("fs");  
 var router = express.Router();
 
 var ArticleService = require("../service/articleService");
@@ -16,18 +16,18 @@ router.get('/', function(req, res, next) {
 
 	res.render('error');
 
-	var contentdata=rf.readFileSync(__dirname+"/../simulatedata/detail.md","utf-8");
-	//读取测试数据
+	// var contentdata=rf.readFileSync(__dirname+"/../simulatedata/detail.md","utf-8");
+	// //读取测试数据
 
-	var html = makedown(contentdata);
+	// var html = makedown(contentdata);
 
-	//console.log(makedown(contentdata));
+	// //console.log(makedown(contentdata));
 
-	var testData = {
-		content:html
-	};
+	// var testData = {
+	// 	content:html
+	// };
 
-	res.render('detail', testData);	//文章列表首页
+	// res.render('detail', testData);	//文章列表首页
 });
 
 

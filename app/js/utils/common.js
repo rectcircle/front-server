@@ -41,11 +41,17 @@
          showPromptBox: function (content, type) {
              var _type = type || 'danger';
              var html = '<div class="alert alert-' + _type + ' alert-dismissible" role="alert" style="position: fixed;top: 60px;right:20px;left: 20px; z-index: 2">' +
-                            '<button type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
+                            '<button id="" type="button" class="close" data-dismiss="alert"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>' +
                             content +
                         '</div>';
 
-             $('body').append(html);
+            var $html = $(html);
+
+            setTimeout(function(){
+                $html.remove();
+            }, 3000);
+
+             $('body').append($html);
          },
 
      };

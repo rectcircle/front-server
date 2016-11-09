@@ -1,5 +1,4 @@
 main(['backTop'], function (backTop) {
-    $('#backTop').backtop();
 
     $(document).ready(function () {
         $('#fullpage').fullpage({

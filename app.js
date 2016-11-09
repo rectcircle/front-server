@@ -56,24 +56,28 @@ app.use(cookieParser());	//cookie解析
 
 var cacheOpts ={
 	maxAge: 60*60*24*365
-}
+};
 
 
 if(app.get('env') === 'production'){
 	console.log('进入了生产模式');
+	app.use('/favicon.ico',express.static(path.join(__dirname, '/public/favicon.ico')));
 	app.use('**/js',express.static(path.join(__dirname, '/public/js'),cacheOpts));	//设定静态文件目录
 	app.use('**/css',express.static(path.join(__dirname, '/public/css'),cacheOpts));	//设定静态文件目录
 	app.use('**/img',express.static(path.join(__dirname, '/public/img'),cacheOpts));	//设定静态文件目录
 	app.use('**/fonts',express.static(path.join(__dirname, '/public/fonts'),cacheOpts));	//设定静态文件目录
+	app.use('**/res',express.static(path.join(__dirname, '/public/res'),cacheOpts));	//设定静态文件目录
 	app.set('views', __dirname + '/views');	//注册模板的目录位置，默认为__dirname + 'views'
 } else if(app.get('env') === 'development') {
 //配置调试环境
 	console.log('进入了开发者模式');
+	app.use('/favicon.ico',express.static(path.join(__dirname, '/public/favicon.ico')));
 	app.use('**/js', express.static(path.join(__dirname, '/.tmp/js')));
 	app.use('**/css', express.static(path.join(__dirname, '/.tmp/css')));
 	app.use('**/img', express.static(path.join(__dirname, '/app/img')));
 	app.use('**/img', express.static(path.join(__dirname, '/public/img')));
 	app.use('**/fonts', express.static(path.join(__dirname, '/.tmp/fonts')));
+	app.use('**/res',express.static(path.join(__dirname, '/public/res'),cacheOpts));	//设定静态文件目录
 	app.use('**/bower_components',express.static(path.join(__dirname, '/bower_components')));
 	app.use('**/components',express.static(path.join(__dirname, '/components')));
 
@@ -86,7 +90,6 @@ app.use('/article', article);
 app.use('/detail', detail);
 app.use('/admin', admin);
 app.use('/upload', upload);
-
 
 //------------------------
 

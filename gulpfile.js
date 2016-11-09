@@ -166,7 +166,7 @@ gulp.task('nodemon:dist', function(cb) {
 //启动测试服务器监视文件变化并实时展示
 gulp.task('serve', function() {
 	//顺序执行
-	runSequence(['clean', 'wiredep'], ['html', 'fonts','img'],['nodemon'], function() {
+	runSequence(['clean', 'wiredep'], ['html', 'fonts','img','extras'],['nodemon'], function() {
 		browserSync.init({
 			notify: false,
 			port: 9000,

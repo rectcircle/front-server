@@ -3,8 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>文章</title>
-	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	{{include 'meta'}}
 
 	<!-- build:css css/admin_vendor.css -->
 	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
@@ -28,7 +27,7 @@
 	 -->
 	<!-- Nav tabs -->
 	<div class="container" style="height: 100%">
-	<h1>后台管理</h1>
+	<h1>后台管理 <small><button id="goBottom" class="btn">转到底部</button></small></h1>
 	<ul class="nav nav-tabs" role="tablist">
 		<li id="loginTab" role="presentation"><a href="#loginView" role="tab" data-toggle="tab">登录</a></li>
 		<li role="presentation"><a href="#comment" role="tab" data-toggle="tab">最新评论</a></li>
@@ -140,6 +139,8 @@
 			
 		</div>
 	</div>
+
+	{{include 'backtop'}}
 	
 	<!-- <a href="###" id="backTop">返回顶部</a> -->
 

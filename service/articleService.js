@@ -58,7 +58,7 @@ ArticleService.prototype.getSearchArticleList = function(func, opts){
 				});
 			},
 			crumb: function(done){
-				done(null,"搜索："+opts.wd);
+				done(null,{crumb:"搜索："+opts.wd});
 			}
 		},func);
 };
@@ -66,7 +66,11 @@ ArticleService.prototype.getSearchArticleList = function(func, opts){
 //获取tag标签的私有方法
 function getAllTag(done){
 	httprequest.get("tag/getAll", function(data){
-		done(null, data.data); //done(err,data)，用于传递回调数据
+		if(data.errcode===0){
+			done(null, data.data); //done(err,data)，用于传递回调数据
+		} else {
+			done("getAllTag", data); //done(err,data)，用于传递回调数据
+		}
 	});
 }
 
@@ -74,7 +78,11 @@ function getAllTag(done){
 function getAllSubject(done){
 	httprequest.get("subject/getAll", function(data){
 		// console.log(data);
-		done(null, data.data); //done(err,data)，用于传递回调数据
+		if(data.errcode===0){
+			done(null, data.data); //done(err,data)，用于传递回调数据
+		} else {
+			done("getAllSubject", data); //done(err,data)，用于传递回调数据
+		}
 	});
 }
 
@@ -93,7 +101,8 @@ function getCatalog(opts, done){
 
 
 	httprequest.post("article/getCatalog",form , function(data){
-		if(data.data){
+
+		if(data.errcode===0 && data.data){
 			var catalogs = data.data;
 			
 			//处理摘要数据
@@ -124,10 +133,14 @@ function getPageCount(opts, done){
 
 
 	httprequest.post("page/count", form, function(data){
-		done(null, {
-			pageCount :data.data,
-			nowPage: opts.nowPage
-		});
+		if(data.errcode===0){
+			done(null, {
+				pageCount :data.data,
+				nowPage: opts.nowPage
+			});
+		} else {
+			done("getPageCount",data);
+		}
 	});
 
 
@@ -146,7 +159,12 @@ function getCrumbs(opts, done){
 	}
 
 	httprequest.post("getCrumbs", form, function(data){
-		done(null, data.data);
+		if(data.errcode===0){
+			// console.log(data);
+			done(null, data.data);
+		} else {
+			done("getCrumbs", data);
+		}
 	});
 
 
@@ -161,7 +179,11 @@ function getDetail(opts, done){
 	}
 
 	httprequest.post("article/getDetail", form, function(data){
-		done(null, data.data);
+		if(data.errcode===0){
+			done(null, data.data);
+		} else {
+			done("getDetail", data);
+		}
 	});
 }
 
@@ -175,7 +197,7 @@ function getSearchCatalog(opts, done){
 
 
 	httprequest.post("article/getSearchCatalog",form , function(data){
-		if(data.data){
+		if( data.errcode===0 && data.data){
 			var catalogs = data.data;
 			
 			//处理摘要数据
@@ -193,9 +215,8 @@ function getSearchCatalog(opts, done){
 
 //
 function readTimeAdd(id){
-	console.log(id);
 	httprequest.post("article/readTimesAdd",{articleId: id} , function(data){
-		console.log(data);
+		//console.log(data);
 	});
 
 }

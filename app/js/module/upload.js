@@ -9,10 +9,10 @@ define('Upload', ['Common'], function (Common) {
     function afterUpload (data) {
         var item = '<div class="col-sm-3 col-md-2 .col-xs-3">' +
 					'	<div class="thumbnail">' +
-					'	  <img class="thumbnail-100" src="/img/' + data + '" alt="...">' +
+					'	  <img class="thumbnail-100" src="/res/' + data + '" alt="...">' +
 					'	  <div class="caption linebreak">' +
-					'	  	<p>/img/test.img</p>' +
-					'	    <p class="text-center .copy"><button data-src="/img/' + data + '" class="btn btn-primary copyBtn" role="button">复制信息</button></p>' +
+					'	  	<p>/res/'+ data +'</p>' +
+					'	    <p class="text-center .copy"><button data-src="/res/' + data + '" class="btn btn-primary copyBtn" role="button">复制信息</button></p>' +
 					'	  </div>' +
 					'	</div>' +
 					'</div>';
@@ -34,7 +34,7 @@ define('Upload', ['Common'], function (Common) {
             processData: false, // 必须false才会自动加上正确的Content-Type
             success: function (data) {
                 console.log(data);
-                if (data.errcode == 0) {
+                if (data.errcode === 0) {
                     afterUpload(data.data);
                 } else {
                     Common.showPromptBox(data.errmsg);

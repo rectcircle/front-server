@@ -1,7 +1,7 @@
 /**
  * main函数，程序入口
  */
-main(['Common', 'Login', 'ArticleAdmin', 'Upload'],function (Common, Login, ArticleAdmin,Upload) {
+main(['Common', 'Login', 'ArticleAdmin', 'Upload','backTop'],function (Common, Login, ArticleAdmin,Upload,backTop) {
 	$(function(){
 		new Login();
 		new ArticleAdmin();
@@ -12,5 +12,15 @@ main(['Common', 'Login', 'ArticleAdmin', 'Upload'],function (Common, Login, Arti
 		    }
 		});
 		new Upload('#startUpload', '#uploadForm');
+		new backTop.BackTop('#backtop');
+		$('#goBottom').click(function(){ 
+			$('html, body').animate({scrollTop: $(document).height()}, 300); 
+			
+			return false; 
+		}); 
+
 	});
+
+
+
 });

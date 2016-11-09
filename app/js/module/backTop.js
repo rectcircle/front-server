@@ -8,6 +8,8 @@ define('backTop', ['scrollTo'], function (scrollTo) {
             speed: this.opts.speed,
         });
 
+
+
         if (this.opts.mode === 'move') {
             this.$el.click($.proxy(this._move, this));
         } else {
@@ -40,15 +42,6 @@ define('backTop', ['scrollTo'], function (scrollTo) {
             $el.fadeOut();
         }
     };
-
-    // jquery插件
-    $.fn.extend({
-        backtop: function (opts) {
-            return this.each(function () {
-                new BackTop(this, opts);
-            });
-        },
-    });
 
     return {
         BackTop: BackTop,

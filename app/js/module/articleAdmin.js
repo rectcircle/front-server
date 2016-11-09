@@ -2,7 +2,7 @@
  * 定义一组处理登录的类
  *
  */
-define('ArticleAdmin', ['Common'], function (Common) {
+ define('ArticleAdmin', ['Common'], function (Common) {
     function ArticleAdmin () {
         $('#publishArticle').click(addArticle); // 发布文章
         $('#saveArticle').click(addArticle); // 保存文章
@@ -31,19 +31,19 @@ define('ArticleAdmin', ['Common'], function (Common) {
                 id: id,
             },
         })
-		.done(function (data) {
-    if (data.errcode === 0) {
-        Common.showPromptBox('删除成功', 'success');
-        getArticleList();
-        $('#listTab a').tab('show');
-    } else {
-        Common.showPromptBox(data.errmsg);
-    }
-    console.log('success');
-})
-		.fail(function () {
-    Common.showPromptBox('删除文章，请求失败');
-});
+        .done(function (data) {
+            if (data.errcode === 0) {
+                Common.showPromptBox('删除成功', 'success');
+                getArticleList();
+                $('#listTab a').tab('show');
+            } else {
+                Common.showPromptBox(data.errmsg);
+            }
+            console.log('success');
+        })
+        .fail(function () {
+            Common.showPromptBox('删除文章，请求失败');
+        });
     }
 
 
@@ -64,18 +64,18 @@ define('ArticleAdmin', ['Common'], function (Common) {
             dataType: 'json',
             data: formData,
         })
-		.done(function (data) {
-    if (data.errcode === 0) {
+        .done(function (data) {
+            if (data.errcode === 0) {
 				// Common.showPromptBox("保存成功","success");
-        getSubjectList();
-    } else {
-        Common.showPromptBox(data.errmsg);
-    }
-    console.log('success');
-})
-		.fail(function () {
-    Common.showPromptBox('添加主题，请求失败');
-});
+                getSubjectList();
+            } else {
+                Common.showPromptBox(data.errmsg);
+            }
+            console.log('success');
+        })
+        .fail(function () {
+            Common.showPromptBox('添加主题，请求失败');
+        });
 
     }
 
@@ -88,18 +88,18 @@ define('ArticleAdmin', ['Common'], function (Common) {
             dataType: 'json',
             data: getFormData($(this)),
         })
-		.done(function (data) {
-    console.log(data);
-    if (data.errcode === 0) {
-        createSubjectListView(data.data);
-    } else {
-        Common.showPromptBox(data.errmsg);
-    }
+        .done(function (data) {
+            console.log(data);
+            if (data.errcode === 0) {
+                createSubjectListView(data.data);
+            } else {
+                Common.showPromptBox(data.errmsg);
+            }
 
-})
-		.fail(function () {
-    Common.showPromptBox('获取主题列表，请求失败');
-});
+        })
+        .fail(function () {
+            Common.showPromptBox('获取主题列表，请求失败');
+        });
 
     }
 
@@ -110,16 +110,16 @@ define('ArticleAdmin', ['Common'], function (Common) {
 
         data.forEach(function (e) {
             html += '<tr>' +
-					'	<td>' + e.id + '</td>' +
-					'	<td>' + e.name + '</td>' +
-					'	<td>' + e.number + '</td>' +
-					'	<td>' + e.description + '</td>' +
-					'	<td>' +
-					'		<button data-name="' + e.name + '" type="button" class="btn btn-success subject-article" >添加到文章编辑</button>' +
-					'		<button data-name="' + e.name + '" data-id="' + e.id + '" data-description="' + e.description + '" type="button" class="btn btn-warning subject-edit">编辑主题</button>' +
-					'		<button data-id="' + e.id + '" type="button" class="btn btn-danger subject-del">删除</button>' +
-					'	</td>' +
-					'</tr>';
+            '	<td>' + e.id + '</td>' +
+            '	<td>' + e.name + '</td>' +
+            '	<td>' + e.number + '</td>' +
+            '	<td>' + e.description + '</td>' +
+            '	<td>' +
+            '		<button data-name="' + e.name + '" type="button" class="btn btn-success subject-article" >添加到文章编辑</button>' +
+            '		<button data-name="' + e.name + '" data-id="' + e.id + '" data-description="' + e.description + '" type="button" class="btn btn-warning subject-edit">编辑主题</button>' +
+            '		<button data-id="' + e.id + '" type="button" class="btn btn-danger subject-del">删除</button>' +
+            '	</td>' +
+            '</tr>';
         });
 
         var $html = $(html);
@@ -158,17 +158,17 @@ define('ArticleAdmin', ['Common'], function (Common) {
                     id: id,
                 },
             })
-			.done(function (data) {
-    if (data.errcode === 0) {
-        getSubjectList();
-    } else {
-        Common.showPromptBox(data.errmsg);
-    }
-    console.log('success');
-})
-			.fail(function () {
-    Common.showPromptBox('删除主题，请求失败');
-});
+            .done(function (data) {
+                if (data.errcode === 0) {
+                    getSubjectList();
+                } else {
+                    Common.showPromptBox(data.errmsg);
+                }
+                console.log('success');
+            })
+            .fail(function () {
+                Common.showPromptBox('删除主题，请求失败');
+            });
         });
 
         $('#subjectListView').empty().append($html);
@@ -182,18 +182,18 @@ define('ArticleAdmin', ['Common'], function (Common) {
             dataType: 'json',
             data: getFormData($(this)),
         })
-		.done(function (data) {
-    console.log(data);
-    if (data.errcode === 0) {
-        createTagListView(data.data);
-    } else {
-        Common.showPromptBox(data.errmsg);
-    }
+        .done(function (data) {
+            console.log(data);
+            if (data.errcode === 0) {
+                createTagListView(data.data);
+            } else {
+                Common.showPromptBox(data.errmsg);
+            }
 
-})
-		.fail(function () {
-    Common.showPromptBox('获取标签列表，请求失败');
-});
+        })
+        .fail(function () {
+            Common.showPromptBox('获取标签列表，请求失败');
+        });
 
     }
 
@@ -203,14 +203,14 @@ define('ArticleAdmin', ['Common'], function (Common) {
 
         data.forEach(function (e) {
             html += '<tr>' +
-					'<td>' + e.id + '</td>' +
-					'<td>' + e.name + '</td>' +
-					'<td>' + e.number + '</td>' +
-					'<td>' +
-					'	<button type="button" data-id="' + e.id + '"  data-name="' + e.name + '" class="btn btn-success tag-article" >添加到文章编辑</button>' +
-					'	<button type="button" data-id="' + e.id + '"  data-name="' + e.name + '" class="btn btn-danger tag-del" >删除</button>' +
-					'</td>' +
-					'</tr>';
+            '<td>' + e.id + '</td>' +
+            '<td>' + e.name + '</td>' +
+            '<td>' + e.number + '</td>' +
+            '<td>' +
+            '	<button type="button" data-id="' + e.id + '"  data-name="' + e.name + '" class="btn btn-success tag-article" >添加到文章编辑</button>' +
+            '	<button type="button" data-id="' + e.id + '"  data-name="' + e.name + '" class="btn btn-danger tag-del" >删除</button>' +
+            '</td>' +
+            '</tr>';
         });
 
         var $html = $(html);
@@ -241,17 +241,17 @@ define('ArticleAdmin', ['Common'], function (Common) {
                     id: id,
                 },
             })
-			.done(function (data) {
-    if (data.errcode === 0) {
-        getTagList();
-    } else {
-        Common.showPromptBox(data.errmsg);
-    }
-    getTagList();
-})
-			.fail(function () {
-    Common.showPromptBox('删除标签，请求失败');
-});
+            .done(function (data) {
+                if (data.errcode === 0) {
+                    getTagList();
+                } else {
+                    Common.showPromptBox(data.errmsg);
+                }
+                getTagList();
+            })
+            .fail(function () {
+                Common.showPromptBox('删除标签，请求失败');
+            });
         });
 
         $('#tagListView').empty().append($html);
@@ -300,20 +300,20 @@ define('ArticleAdmin', ['Common'], function (Common) {
             dataType: 'json',
             data: getFormData($(this)),
         })
-		.done(function (data) {
-    if (data.errcode === 0) {
-        Common.showPromptBox('保存或发布成功', 'success');
-        $('#editView').data('id', data.data);
-        getArticleList();
-        $('#listTab a').tab('show');
-    } else {
-        Common.showPromptBox(data.errmsg);
-    }
-    console.log('success');
-})
-		.fail(function () {
-    Common.showPromptBox('添加文章，请求失败');
-});
+        .done(function (data) {
+            if (data.errcode === 0) {
+                Common.showPromptBox('保存或发布成功', 'success');
+                $('#editView').data('id', data.data);
+                getArticleList();
+                $('#listTab a').tab('show');
+            } else {
+                Common.showPromptBox(data.errmsg);
+            }
+            console.log('success');
+        })
+        .fail(function () {
+            Common.showPromptBox('添加文章，请求失败');
+        });
 
     }
 
@@ -368,17 +368,17 @@ define('ArticleAdmin', ['Common'], function (Common) {
             type: 'POST',
             dataType: 'json',
         })
-		.done(function (data) {
-    if (data.errcode === 0) {
-        ArticleAdmin.prototype.articleList = data.data;
-        $('#list').empty().append(createArticleList$el(data.data));
-    } else {
-        Common.showPromptBox(data.errmsg);
-    }
-})
-		.fail(function () {
-    Common.showPromptBox('获取文章内容，请求失败');
-});
+        .done(function (data) {
+            if (data.errcode === 0) {
+                ArticleAdmin.prototype.articleList = data.data;
+                $('#list').empty().append(createArticleList$el(data.data));
+            } else {
+                Common.showPromptBox(data.errmsg);
+            }
+        })
+        .fail(function () {
+            Common.showPromptBox('获取文章内容，请求失败');
+        });
     }
 
 	// 将这个类暴露给外部

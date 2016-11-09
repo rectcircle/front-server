@@ -24,7 +24,7 @@ function proxy(path, userReq, userRes){
 			cookie = cookies[i];
 			if(cookie.indexOf("JSESSIONID")!==-1){ //是java的sessionid
 				//处理path的值
-				cookie = cookie.replace(/Path.+?; /i,"");
+				cookie = cookie.replace(/Path.+?; /i,"/");
 			} 
 			resArr.push(cookie);
 		}
@@ -86,7 +86,7 @@ function post(path, data, func){
 	 */
 	request(opts, function(err, res, body){
 		if(err){
-			func(err);
+			func({errcode:50000, errmsg: "后端服务器请求错误", data: err});
 		} else {
 			func(body);
 		}
@@ -108,7 +108,7 @@ function get(path, func){
 	 */
 	request(opts, function(err, res, body){
 		if(err){
-			func(err);
+			func({errcode:50000, errmsg: "后端服务器请求错误", data: err});
 		} else {
 			func(body);
 		}

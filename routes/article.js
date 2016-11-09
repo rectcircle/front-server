@@ -127,7 +127,7 @@ router.get('/search/', function(req, res, next) {
 		if(err){
 			res.render('error');	//文章列表首页
 		} else {
-			console.log(data.crumb);
+			//console.log(data.crumb);
 			
 			data.path = "/article/page/";
 			res.render('article',data);	//文章列表首页

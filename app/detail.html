@@ -2,11 +2,8 @@
 <html lang="zh-CN">
 <head>
 	<meta charset="UTF-8">
-	<title>文章</title>
-	<meta name="viewport" content="width=device-width,height=device-height,initial-scale=1.0">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-
-	
+	<title>{{detail.title}}</title>
+	{{include 'meta'}}
 	<!-- build:css css/article_vendor.css -->
 	<link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css" />
 	<link rel="stylesheet" href="../components/prism/prism.css" />
@@ -39,6 +36,7 @@
 			</div>
 		</div>
 	</div>
+	{{include 'backtop'}}
 
 	{{include 'footer'}}
 
