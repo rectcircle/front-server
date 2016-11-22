@@ -20,11 +20,15 @@
 @import "lib/breadcrumb";
 
 a{
-	color: $bgc;
-	 &:hover{
-     	color: $bgc;
+    color: $bgc;
+     &:hover{
+        color: $bgc;
+     }
+     &:focus{
+        color: $bgc;  
      }
 }
+
 
 .posted-desc{
 	color:$descColor;
