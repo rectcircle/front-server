@@ -1,6 +1,0 @@
-<div class="list-group"><a href="#" class="list-group-item list-header">标签 </a>{{each tags}} <a href="/article/tag/{{$value.id}}" class="list-group-item"><span class="badge">{{$value.number}}</span>{{$value.name}}</a> {{/each}}</div><!-- 				<div class="list-group">
-  <a href="#" class="list-group-item list-header">
-    日期
-  </a>
-  <a href="#" class="list-group-item"><span class="badge">14</span>2016年10月</a>
-</div> --><div class="list-group"><a href="#" class="list-group-item list-header">主题 </a>{{each subjects}} <a href="/article/subject/{{$value.id}}" class="list-group-item subject-item"><span class="badge">{{$value.number}}</span>{{$value.name}}</a> {{/each}}</div><div class="list-group"><a href="#" class="list-group-item list-header">站内搜索</a><form role="form" action="/article/search" method="get"><div class="input-group"><input type="text" class="form-control" name="wd" placeholder="请输入关键字"> <span class="input-group-btn"><button class="btn btn-default" type="submit">Go!</button></span></div></form></div>
