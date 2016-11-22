@@ -15,6 +15,9 @@ a{
      &:hover{
         color: $bgc;
      }
+     &:focus{
+        color: $bgc;  
+     }
 }
 
 .container{

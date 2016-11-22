@@ -17,6 +17,7 @@ router.get('/', function(req, res, next) {
 			res.render('error');	//文章列表首页
 		} else {
 			//console.log(data);
+			//console.log(data.pageInfo);
 			
 			data.path = "/article/page/";
 			res.render('article',data);	//文章列表首页
@@ -34,7 +35,7 @@ router.get('/page/:page', function(req, res, next) {
 		if(err){
 			res.render('error');	//文章列表首页
 		} else {
-			//console.log(data.pageInfo);
+			console.log(data.pageInfo);
 			data.path = "/article/page/";
 			res.render('article',data);	//文章列表首页
 		}

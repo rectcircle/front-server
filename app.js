@@ -112,7 +112,7 @@ if (app.get('env') === 'development') {
 
 if(app.get('env') === 'production'){
 	// 发布前注释掉http端口
-//	http.createServer(app).listen(80);	//仅仅为调试
+	// http.createServer(app).listen(80);	//仅仅为调试
 	https.createServer(options, app).listen(443);
 } else if(app.get('env') === 'development'){
 	app.listen(3000);

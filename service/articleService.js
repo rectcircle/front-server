@@ -99,6 +99,10 @@ function getCatalog(opts, done){
 		form.subjectId = opts.subjectId;
 	}
 
+	if(opts.nowPage){
+		form.page = opts.nowPage;
+	}
+
 
 	httprequest.post("article/getCatalog",form , function(data){
 

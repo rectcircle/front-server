@@ -24,7 +24,7 @@ define('Login', ['Common'], function (Common) {
 
         })
             .done(function (data) {
-                console.log(data);
+                // console.log(data);
                 if (data.errcode === 0) {
                     trueFunc();
                 } else {

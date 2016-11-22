@@ -349,6 +349,7 @@
             $('#editView').data('id', id); // 修改文章，要设置数据id
             $('#title').val(article.title);
 			// $('#editor').val(article.content);
+            getArticleContent(id);
             simplemde.value(article.content);
             $('#articleStatus').text('Old');
             $('#editTab a').tab('show');
@@ -358,6 +359,27 @@
         return $html;
     }
 
+    function getArticleContent(articleId){
+        $.ajax({
+            url: 'admin/article/getDetail',
+            type: 'POST',
+            dataType: 'json',
+            data:{
+                articleId:articleId
+            }
+        })
+        .done(function (data) {
+            if (data.errcode === 0) {
+                //$('#editor').val(data.data.content);
+                simplemde.value(data.data.content);
+            } else {
+                Common.showPromptBox(data.errmsg);
+            }
+        })
+        .fail(function () {
+            Common.showPromptBox('获取文章内容，请求失败');
+        });
+    }
 
 	// 获取文章列表并缓存下来
     function getArticleList () {
@@ -377,7 +399,7 @@
             }
         })
         .fail(function () {
-            Common.showPromptBox('获取文章内容，请求失败');
+            Common.showPromptBox('获取文章列表，请求失败');
         });
     }
 
